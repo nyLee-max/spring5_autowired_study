@@ -30,7 +30,7 @@ public class MemberListPrinter {
 	}
 
 	@Autowired
-	@Qualifier("printer1")
+	@Qualifier("printer2")
 	public void setPrinter(MemberPrinter memberPrinter) {
 		this.printer = memberPrinter;
 	}

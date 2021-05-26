@@ -48,7 +48,7 @@ public class AppCtx {
 	}
 	
 	@Bean
-
+	@Qualifier("printer2")
 	public MemberPrinter memberPrinter2() {
 		return new MemberPrn2();
 	}

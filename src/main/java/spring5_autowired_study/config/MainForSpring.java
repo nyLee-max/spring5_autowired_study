@@ -17,15 +17,12 @@ import spring5_autowired_study.spring.RegisterRequest;
 import spring5_autowired_study.spring.VersionPrinter;
 import spring5_autowired_study.spring.WrongIdPasswordException;
 
-
-
 public class MainForSpring {
 
 	private static ApplicationContext ctx = null;
 
 	public static void main(String[] args) throws IOException {
 		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
-
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			System.out.println("명령어를 입력하세요:");
@@ -42,15 +39,15 @@ public class MainForSpring {
 				processChangeCommand(command.split(" "));
 				continue;
 			}
-			if(command.equalsIgnoreCase("list")) {
+			if (command.equalsIgnoreCase("list")) {
 				processListCommand();
 				continue;
 			}
-			if(command.startsWith("info ")) {
+			if (command.startsWith("info ")) {
 				processInfoCommand(command.split(" "));
 				continue;
 			}
-			if(command.equalsIgnoreCase("version")) {
+			if (command.equalsIgnoreCase("version")) {
 				processVersionCommand();
 				continue;
 			}
@@ -58,21 +55,17 @@ public class MainForSpring {
 		}
 	}
 
-
-
 	private static void processVersionCommand() {
 		VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class);
 		versionPrinter.print();
 	}
 
-
-
 	private static void processInfoCommand(String[] arg) {
-		if(arg.length != 2) {
+		if (arg.length != 2) {
 			printHelp();
 			return;
 		}
-		MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter",MemberInfoPrinter.class);
+		MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
 		infoPrinter.printMemberInfo(arg[1]);
 	}
 
